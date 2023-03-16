@@ -28,7 +28,16 @@
 		<a href="/01_Servlet/GetServlet?model=냉장고&price=200">파라미터전송</a>
 	</div>
 	
-	
+	<!-- <form> 태그로 submit하기(파라미터 보내기) -->
+	<div>
+		<form action="/01_Servlet/GetServlet">
+			<label for="model">모델명</label>
+			<input type="text" id="model" name="model" placeholder="모델명">
+			<label for="price">가격</label>
+			<input type="text" id="price" name="price" placeholder="가격(원)">
+			<button type="submit">파라미터전송</button>
+		</form>
+	</div>
 	
 	
 	
