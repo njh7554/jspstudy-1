@@ -1,6 +1,8 @@
 package practice05;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +17,14 @@ public class Practice05_1 extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 냉장고 sysout으로 출력하고 Practice05_2로 리다이렉트
+		// 요청 인코딩
+		request.setCharacterEncoding("UTF-8");
+		
+		String model = request.getParameter("model");
+		System.out.println("Practice05_1 : " + model);
+		
+		// 응답할 URL의 인코딩이 필요하다.
+		response.sendRedirect("/01_Servlet/Practice05_2?model=" + URLEncoder.encode(model, "UTF-8"));
 		
 	}
 

@@ -14,7 +14,10 @@ public class Practice05_2 extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 냉장고 sysout으로 출력
+		request.setCharacterEncoding("UTF-8");
+		
+		String model = request.getParameter("model");
+		System.out.println("Practice05_2 : " + model);
 		
 	}
 

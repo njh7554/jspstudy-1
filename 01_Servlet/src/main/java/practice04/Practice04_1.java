@@ -1,4 +1,4 @@
-package practice03;
+package practice04;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Practice03_1")
+@WebServlet("/Practice04_1")
 
-public class Practice03_1 extends HttpServlet {
+public class Practice04_1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,7 +17,7 @@ public class Practice03_1 extends HttpServlet {
 		// 리다이렉트로 파라미터를 전달하려면 다시 파라미터를 붙여야 한다.
 		
 		String model = request.getParameter("model");
-		response.sendRedirect("/01_Servlet/Practice03_2?model=" + model);
+		response.sendRedirect("/01_Servlet/Practice04_2?model=" + model);
 		
 	}
 
