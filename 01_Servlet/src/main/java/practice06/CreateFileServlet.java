@@ -1,6 +1,12 @@
 package practice06;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,10 +27,29 @@ public class CreateFileServlet extends HttpServlet {
 				3) 파일내용 : 내용 그대로 추가
 		*/
 		
+		request.setCharacterEncoding("UTF-8");
+		
+		String writer = request.getParameter("writer");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		String filename = LocalDate.now().toString() + "-" + writer + "-" + title + ".txt";
+		File dir = new File(request.getServletContext().getRealPath("storage"));
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		
+		File file = new File(dir, filename);
+		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+		bw.write(content);
+		bw.flush();
+		bw.close();
+		
 		/*
 			2. FileResponseServlet으로 리다이렉트
 				파일명 전달
 		*/
+		response.sendRedirect("/01_Servlet/FileResponseServlet?filename=" + URLEncoder.encode(filename, "UTF-8"));
 	
 	}
 

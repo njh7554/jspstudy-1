@@ -1,6 +1,8 @@
 package practice06;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +24,17 @@ public class FileResponseServlet extends HttpServlet {
 				client.html로 이동하기
 		*/
 		
+		request.setCharacterEncoding("UTF-8");
+		String filename = request.getParameter("filename");
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		out.println("alert('" + filename + "  파일이 생성되었습니다.');");
+		out.println("location.href='/01_Servlet/practice06/client.html';");
+		out.println("</script>");
+		out.flush();
+		out.close();
 		
 	}
 
