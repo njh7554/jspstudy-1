@@ -51,9 +51,13 @@
 				/* 요청 */
 				type: 'get',
 				url: '/01_Servlet/JSONServlet',
-				data: $('#frm_person').serialize()  // form 내부의 모든 입력 요소를 보냄(name 속성이 파라미터로 인식된다.)
+				data: $('#frm_person').serialize(),  // form 내부의 모든 입력 요소를 보냄(name 속성이 파라미터로 인식된다.)
 				/* 응답 */
-				
+				dataType: 'json',
+				success: (resData)=>{  // resData == {"name":"마돈나", "age":50}
+					$('#content2').append($('<div>').text(resData.name));
+					$('#content2').append($('<div>').text(resData.age));
+				}
 			})
 		})
 	</script>

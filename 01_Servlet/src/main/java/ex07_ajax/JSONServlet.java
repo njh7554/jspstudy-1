@@ -1,6 +1,8 @@
 package ex07_ajax;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,8 +41,19 @@ public class JSONServlet extends HttpServlet {
 		JSONObject obj = new JSONObject();
 		obj.put("name", name);
 		obj.put("age", age);
+		// System.out.println(obj.toString());  // {"name":"마돈나", "age":50}
 		
-		System.out.println(obj.toString());  // {"name": "마돈나", "age": 50}
+		// 응답 데이터 타입
+		response.setContentType("application/json; charset=UTF-8");
+		
+		// 출력 스트림 생성
+		PrintWriter out = response.getWriter();
+		
+		// 출력
+		String resData = obj.toString();
+		out.println(resData);  // 텍스트 형식으로 된 JSON 데이터를 응답한다.
+		out.flush();
+		out.close();
 	
 	}
 
