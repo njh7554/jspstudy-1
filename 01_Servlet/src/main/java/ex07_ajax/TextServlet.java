@@ -26,7 +26,12 @@ public class TextServlet extends HttpServlet {
 			String strPrice = request.getParameter("price");
 			int price = 0;
 			if(strPrice != null && strPrice.isEmpty() == false) {
-				price = Integer.parseInt(strPrice);  // NumberFormatException 발생 가능
+				price = Integer.parseInt(strPrice);  // NumberFormatException 발생 가능(strPrice가 정수가 아닌 경우)
+			}
+			
+			// 마이너스 금액의 예외 처리
+			if(price < 0) {
+				throw new RuntimeException(price + "원은 입력이 불가능한 금액입니다");
 			}
 			
 			// 응답 데이터 타입
@@ -56,6 +61,24 @@ public class TextServlet extends HttpServlet {
 			// 응답메시지(responseText)
 			PrintWriter out = response.getWriter();
 			out.println("가격을 확인하세요");
+			out.flush();
+			out.close();
+			
+		} catch(RuntimeException e) {
+			
+			// 예외 상황에 따른 응답 만들기
+			// 응답코드   : 601 (임의로 작성)
+			// 응답메시지 : 예외 객체 e에 저장된 message 필드 값
+			
+			// 응답메시지 타입
+			response.setContentType("text/plain; charset=UTF-8");
+			
+			// 응답코드(status)
+			response.setStatus(601);
+			
+			// 응답메시지(responseText)
+			PrintWriter out = response.getWriter();
+			out.println(e.getMessage());
 			out.flush();
 			out.close();
 			
