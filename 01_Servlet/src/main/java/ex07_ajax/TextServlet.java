@@ -1,6 +1,8 @@
 package ex07_ajax;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,8 +27,17 @@ public class TextServlet extends HttpServlet {
 			price = Integer.parseInt(strPrice);
 		}
 		
-		System.out.println(model + ", " + price);
+		// 응답 데이터 타입
+		response.setContentType("text/plain; charset=UTF-8");
 		
+		// 출력 스트림 생성
+		PrintWriter out = response.getWriter();
+		
+		// 출력
+		String resData = "모델은 " + model + "이고, 가격은 " + price + "원입니다.";
+		out.println(resData);
+		out.flush();
+		out.close();
 		
 	}
 

@@ -20,7 +20,13 @@
 				url: '/01_Servlet/TextServlet',  // 요청 URL
 				data: 'model=냉장고&price=200',  // 요청 파라미터
 				/* 응답 */
-				
+				dataType: 'text',
+				success: (resData)=>{
+					$('#content1').append(resData);
+				},
+				error: (jqXHR)=>{
+					
+				}
 			})
 		})
 	</script>
