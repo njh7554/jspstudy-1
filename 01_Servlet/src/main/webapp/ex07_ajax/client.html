@@ -29,7 +29,8 @@
 					$('#content1').append(resData);
 				},
 				error: (jqXHR)=>{
-					
+					$('#content').append($('<div>').text('status : ' + jqXHR.status));
+					$('#content').append($('<div>').text('responseText : ' + jqXHR.responseText));
 				}
 			})
 		})
