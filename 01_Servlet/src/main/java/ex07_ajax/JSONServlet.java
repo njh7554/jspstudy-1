@@ -39,6 +39,11 @@ public class JSONServlet extends HttpServlet {
 				age = Integer.parseInt(strAge);
 			}
 			
+			// 이름 예외 처리
+			if(name.length() < 2 || name.length() > 6) {
+				throw new NameHandleException(name + "은(는) 잘못된 이름입니다", 601);
+			}
+			
 			// 나이 예외 처리
 			if(age < 0 || age > 100) {
 				throw new AgeHandleException(age + "살은 잘못된 나이입니다", 600);
@@ -62,7 +67,7 @@ public class JSONServlet extends HttpServlet {
 			out.flush();
 			out.close();
 			
-		} catch(AgeHandleException e) {
+		} catch(MyHandleException e) {
 			
 			response.setContentType("text/plain; charset=UTF-8");
 			
