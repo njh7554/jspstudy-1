@@ -61,9 +61,9 @@ public class AirKoreaApiServlet extends HttpServlet {
 		StringBuilder sb = new StringBuilder();
 		String line = null;
 		while((line = reader.readLine()) != null) {
-			sb.append(line + "\n");
+			sb.append(line);
 		}
-		System.out.println(sb.toString());
+		
 		// 입력 스트림, 접속 종료
 		reader.close();
 		con.disconnect();
