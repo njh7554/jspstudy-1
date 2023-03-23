@@ -64,7 +64,7 @@ public class AirportServlet extends HttpServlet {
 		StringBuilder sb = new StringBuilder();
 		String line = null;
 		while((line = reader.readLine()) != null) {
-			sb.append(line + "\n");
+			sb.append(line);
 		}
 		
 		// 사용한 자원 반납
