@@ -3,6 +3,7 @@ package ex08_api;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -60,14 +61,19 @@ public class AirKoreaApiServlet extends HttpServlet {
 		StringBuilder sb = new StringBuilder();
 		String line = null;
 		while((line = reader.readLine()) != null) {
-			sb.append(line);
+			sb.append(line + "\n");
 		}
-		
+		System.out.println(sb.toString());
 		// 입력 스트림, 접속 종료
 		reader.close();
 		con.disconnect();
 		
-		System.out.println(sb.toString());
+		// API 결과를 ajax 응답 처리하기
+		response.setContentType("application/" + returnType + "; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println(sb.toString());
+		out.flush();
+		out.close();
 		
 	}
 

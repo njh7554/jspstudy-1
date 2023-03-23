@@ -26,6 +26,7 @@
 		<div id="content1"></div>
 	</div>
 	<script>
+	
 		$('#btn1').on('click', function(){
 			$('#content1').empty();
 			$.ajax({
@@ -34,10 +35,28 @@
 				data: $('#frm1').serialize(),
 				dataType: $('#returnType').val(),
 				success: (resData)=>{
-					
+					switch($('#returnType').val()){
+					case "xml":
+						fnXml(resData);
+						break;
+					case "json":
+						fnJson(resData);
+						break;
+					}
 				}
+			})  // ajax
+		})  // click
+		
+		function fnXml(resData){
+			$.each($(resData).find('item'), (i, element)=>{
+				$('#content1').append($(element).find('stationName').text() + '<br>');
 			})
-		})
+		}
+		
+		function fnJson(resData){
+			
+		}
+		
 	</script>
 
 </body>
