@@ -86,23 +86,15 @@
 				/* 응답 */
 				dataType: 'xml',
 				success: (resData)=>{
-					
+					var ul = $('<ul>');
+					ul.append($('<li>').text('제목 : ' + $(resData).find('title').text()));
+					ul.append($('<li>').text('저자 : ' + $(resData).find('author').text()));
+					ul.append($('<li>').text('가격 : ' + $(resData).find('price').text() + '원'));
+					$('#content3').append(ul);
 				}
 			})
 		})
 	</script>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
