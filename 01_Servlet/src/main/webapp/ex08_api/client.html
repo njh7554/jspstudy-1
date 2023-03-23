@@ -54,7 +54,9 @@
 		}
 		
 		function fnJson(resData){
-			
+			$.each(resData.response.body.items, (i, element)=>{
+				$('#content1').append(element.stationName + '<br>');
+			})
 		}
 		
 	</script>
