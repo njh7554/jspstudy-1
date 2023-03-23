@@ -57,6 +57,10 @@
 				success: (resData)=>{  // resData == {"name":"마돈나", "age":50}
 					$('#content2').append($('<div>').text(resData.name));
 					$('#content2').append($('<div>').text(resData.age));
+				},
+				error: (jqXHR)=>{
+					$('#content2').append($('<div>').text(jqXHR.status));
+					$('#content2').append($('<div>').text(jqXHR.responseText));
 				}
 			})
 		})
