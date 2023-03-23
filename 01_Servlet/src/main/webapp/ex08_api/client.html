@@ -60,15 +60,38 @@
 		}
 		
 	</script>
+	
+	<hr>
 
 	<!-- jquery-ui 활용을 위한 css와 js 포함(head 태그에 포함하는 것이 추천) -->
 	<link rel="stylesheet" href="../resources/jquery-ui-1.13.2/jquery-ui.css">
 	<script src="../resources/jquery-ui-1.13.2/jquery-ui.js"></script>
 	<div>
 		<form id="frm2">
-			<label for="schDate">검색일자</label>
-			<input type="text" id="schDate" name="schDate">
+			<div>
+				<label for="schDate">검색일자</label>
+				<input type="text" id="schDate" name="schDate">
+			</div>
+			<div>
+				<label for="schDeptCityCode">출발도시</label>
+				<select name="schDeptCityCode" id="schDeptCityCode">
+					<option value="GMP">김포</option>
+					<option value="ICN">인천</option>
+				</select>
+			</div>
+			<div>
+				<label for="schArrvCityCode">도착도시</label>
+				<select name="schArrvCityCode" id="schArrvCityCode">
+					<option value="JFK">뉴욕</option>
+					<option value="CDG">파리</option>
+					<option value="LHR">런던</option>
+					<option value="NRT">도쿄</option>
+					<option value="RMA">로마</option>
+				</select>
+			</div>
+			<input type="button" id="btn2" value="항공편조회">
 		</form>
+		<div id="content2"></div>
 	</div>
 	<script>
 		$('#schDate').datepicker({
