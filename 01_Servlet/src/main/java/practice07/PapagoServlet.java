@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,14 +52,14 @@ public class PapagoServlet extends HttpServlet {
 		con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
 		
 		// Papago API로 보내야 하는 파라미터(source, target, text)
-		String params = "source=" + source + "&target=" + target + "&text=" + text;
+		String params = "source=" + source + "&target=" + target + "&text=" + URLEncoder.encode(text, "UTF-8");
 		
 		// Papago API로 파라미터를 보내기 위해서 출력 스트림 생성
 		con.setDoOutput(true);
 		DataOutputStream dos = new DataOutputStream(con.getOutputStream());
 		
 		// Papago API로 파라미터 보내기
-		dos.writeUTF(params);
+		dos.write(params.getBytes());
 		dos.flush();
 		dos.close();
 		
