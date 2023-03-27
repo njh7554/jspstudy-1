@@ -3,6 +3,7 @@ package ex11_upload_download;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
@@ -76,7 +77,7 @@ public class UploadServlet extends HttpServlet {
 		out.println("<li>경로 : " + parent + "</li>");
 		out.println("<li>최종수정일 : " + lastModified + "</li>");
 		out.println("<li>파일크기 : " + size + "KB</li>");
-		out.println("<li><a href=\"/01_Servlet/FileListServlet\">첨부된 파일 목록 보기</a></li>");
+		out.println("<li><a href=\"/01_Servlet/FileListServlet?parent=" + URLEncoder.encode(parent, "UTF-8") + "\">첨부된 파일 목록 보기</a></li>");
 		out.println("</ul>");
 		out.flush();
 		out.close();
