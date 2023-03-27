@@ -30,8 +30,8 @@ public class DownloadServlet extends HttpServlet {
 		// 다운로드 해야 할 파일을 읽어들일 입력 스트림
 		BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
 		
-		// 다운로드용 응답 헤더 작업
-		response.setHeader("Content-Disposition", "attachment");
+		// 다운로드용 응답 헤더 작업 (https://developer.mozilla.org/ko/에서 "Content-Disposition" 조회)
+		response.setHeader("Content-Disposition", "attachment; filename=" + path.substring(path.lastIndexOf("\\") + 1));
 		response.setHeader("Content-Length", file.length() + "");
 		
 		// 응답 스트림(출력 스트림)
