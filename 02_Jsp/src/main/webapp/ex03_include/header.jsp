@@ -26,7 +26,7 @@
 </style>
 </head>
 <body>
-
+	
 	<nav>
 		<ul>
 			<li><a href="body1.jsp">body1</a></li>
@@ -35,5 +35,5 @@
 		</ul>
 	</nav>
 
-</body>
-</html>
+	<hr>
+	
