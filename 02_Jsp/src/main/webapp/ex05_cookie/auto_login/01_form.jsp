@@ -9,6 +9,25 @@
 </head>
 <body>
 
+<%
+	// 자동 로그인 확인
+	// 쿠키에 session_id, login_id가 있으면 자동 로그인을 해야 한다.
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		outer:
+		for(int i = 0; i < cookies.length; i++){
+			if(cookies[i].getName().equals("session_id")){
+				for(int j = 0; j < cookies.length; j++){
+					if(cookies[j].getName().equals("login_id")){
+						session.setAttribute("loginId", cookies[j].getValue());  // 쿠키에 저장된 사용자 아이디로 로그인 처리하기
+						break outer;
+					}
+				}
+			}
+		}
+	}
+%>
+
 <% if(session.getAttribute("loginId") == null) { %>
 	<div>
 		<form method="post" action="02_login.jsp">

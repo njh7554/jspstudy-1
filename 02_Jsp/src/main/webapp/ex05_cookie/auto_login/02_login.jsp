@@ -21,18 +21,35 @@
 			// 자동 로그인을 체크했다면 chkAutoLogin이 null이 아니다.
 			if(chkAutoLogin != null){
 				
-				// 자동 로그인 처리
-				// id와 pw를 모두 쿠키에 저장시켜 놓는다.
-				Cookie cookieId = new Cookie("auto_id", id);
-				cookieId.setMaxAge(60 * 60 * 24 * 30);
-				response.addCookie(cookieId);
-				Cookie cookiePw = new Cookie("auto_pw", pw);
-				cookiePw.setMaxAge(60 * 60 * 24 * 30);
-				response.addCookie(cookiePw);
+				// 자동 로그인 처리를 위한 쿠키 생성
 				
-				session.setAttribute("loginId", id);
+				// session의 id를(사용자의 id가 아님) 쿠키에 저장한다.
+				Cookie cookie1 = new Cookie("session_id", session.getId());
+				cookie1.setMaxAge(60 * 60 * 24 * 30);
+				cookie1.setPath(request.getContextPath());
+				response.addCookie(cookie1);
+				
+				// 사용자 id를 쿠키에 저장한다.
+				Cookie cookie2 = new Cookie("login_id", id);
+				cookie2.setMaxAge(60 * 60 * 24 * 30);
+				cookie2.setPath(request.getContextPath());
+				response.addCookie(cookie2);
 				
 			} else {
+				
+				// 자동 로그인 처리를 위한 쿠키 삭제
+				
+				// session_id 쿠키를 삭제한다.
+				Cookie cookie1 = new Cookie("session_id", "");
+				cookie1.setMaxAge(0);
+				cookie1.setPath(request.getContextPath());
+				response.addCookie(cookie1);
+				
+				// login_id 쿠키를 삭제한다.
+				Cookie cookie2 = new Cookie("login_id", "");
+				cookie2.setMaxAge(0);
+				cookie2.setPath(request.getContextPath());
+				response.addCookie(cookie2);
 				
 				// 일반 로그인 처리
 				session.setAttribute("loginId", id);
