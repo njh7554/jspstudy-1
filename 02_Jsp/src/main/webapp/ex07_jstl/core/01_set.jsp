@@ -35,7 +35,6 @@
 		<li>bmi지수  : ${bmi}</li>
 		<li>건강상태 : ${health}</li>
 	</ul>
-	
 
 </body>
 </html>
