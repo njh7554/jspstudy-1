@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<c:if test="${loginId == null}">
+	<c:if test="${sessionScope.loginId == null}">
 		<div>
 			<form method="post" action="${contextPath}/ex07_jstl/practice01_login/02_login.jsp">
 				<div><input type="text" name="id" placeholder="아이디"></div>
@@ -20,9 +20,9 @@
 			</form>
 		</div>
 	</c:if>
-	<c:if test="${loginId != null }">
+	<c:if test="${sessionScope.loginId != null }">
 		<div>
-			${loginId}님 반갑습니다.
+			${sessionScope.loginId}님 반갑습니다.
 			<input type="button" value="로그아웃" id="btn_logout">
 		</div>
 	</c:if>
