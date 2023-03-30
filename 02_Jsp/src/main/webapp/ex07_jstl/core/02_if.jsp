@@ -10,8 +10,7 @@
 <body>
 
 	<%--
-		<c:if></c:if>
-		
+		<c:if>		
 		1. if문을 대체하는 태그이다.
 		2. else문이 지원되지 않는다.
 		3. 형식
@@ -20,7 +19,7 @@
 			</c:if>
 	--%>
 	
-	<c:set var="age" value="466" scope="page"></c:set>
+	<c:set var="age" value="466" scope="page" />
 	<c:if test="${age <= 100}">
 		<h1>살아있네~</h1>
 	</c:if>
@@ -28,7 +27,7 @@
 		<h1>죽었네ㅜㅜ</h1>
 	</c:if>
 	
-	<c:set var="score" value="100" scope="page"></c:set>
+	<c:set var="score" value="100" scope="page" />
 	<c:if test="${score >= 90 and score <= 100}">
 		<h1>${score}점은 A학점입니다.</h1>
 	</c:if>

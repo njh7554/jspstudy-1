@@ -10,7 +10,7 @@
 <body>
 
 	<%--
-		<c:choose></c:choose>
+		<c:choose>
 		1. if문을 대체하는 태그이다.
 		2. 여러 조건을 처리하기에 적합하다.
 		3. else if, else의 개념이 존재한다.
@@ -28,22 +28,22 @@
 			</c:choose>
 	--%>
 
-	<c:set var="age" value="4" scope="page"></c:set>
+	<c:set var="age" value="4" scope="page" />
 	<c:choose>
 		<c:when test="${age <= 7}">
-			<c:set var="result" value="미취학아동" scope="page"></c:set>
+			<c:set var="result" value="미취학아동" scope="page" />
 		</c:when>
 		<c:when test="${age <= 13}">
-			<c:set var="result" value="초등학생" scope="page"></c:set>
+			<c:set var="result" value="초등학생" scope="page" />
 		</c:when>
 		<c:when test="${age <= 16}">
-			<c:set var="result" value="중학생" scope="page"></c:set>
+			<c:set var="result" value="중학생" scope="page" />
 		</c:when>
 		<c:when test="${age <= 19}">
-			<c:set var="result" value="고등학생" scope="page"></c:set>
+			<c:set var="result" value="고등학생" scope="page" />
 		</c:when>
 		<c:otherwise>
-			<c:set var="result" value="성인" scope="page"></c:set>
+			<c:set var="result" value="성인" scope="page" />
 		</c:otherwise>
 	</c:choose>
 	
